@@ -1,6 +1,7 @@
 import { CommunicationIdentityClient, TokenScope } from '@azure/communication-identity';
 import { RoomsClient, CreateRoomOptions, CommunicationRoom } from '@azure/communication-rooms';
 import { Constants } from './constants';
+import { CallAutomationClient } from '@azure/communication-call-automation';
 
 
 export class AzureCommunicationUtils {
@@ -11,11 +12,13 @@ export class AzureCommunicationUtils {
 
     roomsClient: RoomsClient
     communicationIdentityClient: CommunicationIdentityClient
+    // callAutomationClient: CallAutomationClient
 
     private constructor(connectionString: string) {
         this.connectionString = connectionString;
         this.roomsClient = new RoomsClient(this.connectionString);
         this.communicationIdentityClient = new CommunicationIdentityClient(this.connectionString);
+        // this.callAutomationClient = new CallAutomationClient(this.connectionString);
     }
 
     public static getInstance(): AzureCommunicationUtils {
